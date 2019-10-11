@@ -19,45 +19,14 @@ btnLogin.addEventListener('click', event => {
     });
   } else {
     var strData2 = document.querySelector('.date-value').value;
-    var strData = "07/09/2015";
-    var partesData = strData.split("/");
-    var data = new Date(partesData[2], partesData[1] - 1, partesData[0]);
-    var pi = (hoje - data);
-    var hoje = new Date();
-    var dia = hoje.getDate();
-    console.log(strData2);
+    var d = new Date(strData2);
+    d.setDate(d.getDate() + 1);
 
-  var date1 = new Date(strData2);
-  console.log(date1);
-
-  var test = diffDays;
-  // var test = diffDays / Math.PI;
-
-  var d = new Date(strData2);
-  d.setDate(d.getDate() + 1);
-
-  var date2 = new Date();
-  var timeDiff = Math.abs(date2.getTime() - d.getTime());
-  var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-  var resultado = diffDays / (Math.PI*365);
-  alert('Você tem: ' + resultado.toLocaleString() + ' π (Pi) anos.' );
-
-  // alert(test);
-
-  
-  }
-});
-
-form.addEventListener('animationstart', event => {
-  if  (event.animationName === 'down') {
-    document.querySelector('body').style.overflow = 'hidden';
-  }
-});
-
-form.addEventListener('animationend', event => {
-  if (event.animationName === 'down') {
-    form.style.display = 'none';
-    document.querySelector('body').style.overflow = 'none';
+    var date2 = new Date();
+    var timeDiff = Math.abs(date2.getTime() - d.getTime());
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+    var resultado = diffDays / (Math.PI*365);
+    alert('Você tem: ' + resultado.toLocaleString() + ' π (Pi) anos.' );
   }
 });
 
@@ -70,7 +39,7 @@ for (let i = 0; i < 11; i++) {
 
   const random = (min, max) => Math.random() * (max - min) + min;
   
-  const size = Math.floor(random(10, 120));
+  const size = Math.floor(random(100, 320));
   const position = random(1, 99);
   const delay = random(5, 0.1);
   const duration = random(24, 12);
@@ -78,6 +47,7 @@ for (let i = 0; i < 11; i++) {
   li.style.width = `${size}px`;
   li.style.height = `${size}px`;
   li.style.bottom = `-${size}px`;
+  li.style.fontSize = `${size}px`;
 
   li.style.left = `${position}%`;
 
@@ -85,5 +55,6 @@ for (let i = 0; i < 11; i++) {
   li.style.animationDuration = `${duration}s`;
   li.style.animationTimingFunction = `cubic-bezier(${Math.random()},${Math.random()},${Math.random()},${Math.random()})`;
   
+  li.innerHTML = "π";
   ulSquares.appendChild(li);
 }
